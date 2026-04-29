@@ -1,0 +1,10 @@
+# Mis Vacaciones
+/mis-vacaciones     /mis-vacaciones/index.html    200
+/mis-vacaciones/    /mis-vacaciones/index.html    200
+
+# TaskFlow
+/taskflow           /taskflow/index.html          200
+/taskflow/          /taskflow/index.html          200
+
+# Fallback
+/*    /index.html    200
