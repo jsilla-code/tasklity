@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasklity - Herramientas para el dia a dia</title>
+  <meta name="description" content="Coleccion de apps gratuitas e instalables para organizar tu vida diaria." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fafaf8; --surface: #ffffff; --border: #e8e6e0;
+      --text: #1a1916; --muted: #7a7670; --accent: #2d6a4f;
+      --accent-light: #d8f3dc; --radius: 1.125rem;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+      --shadow-hover: 0 2px 6px rgba(0,0,0,.07), 0 8px 28px rgba(0,0,0,.09);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle, #c8c5be 1px, transparent 1px);
+      background-size: 28px 28px; opacity: .35;
+    }
+    .page { position: relative; z-index: 1; }
+    .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+    header { padding: 4rem 0 2.5rem; text-align: center; }
+    .logo-mark { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 2.5rem; }
+    .logo-mark__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+    .logo-mark__name { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; color: var(--text); margin-bottom: .75rem; }
+    h1 em { font-style: italic; color: var(--accent); }
+    .subtitle { font-size: 1.05rem; color: var(--muted); font-weight: 300; max-width: 440px; margin: 0 auto 2.5rem; }
+    .search-wrap { position: relative; max-width: 420px; margin: 0 auto 3.5rem; }
+    .search-wrap__icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .search-wrap__icon svg { display: block; width: 17px; height: 17px; }
+    #search { width: 100%; padding: .85rem 1.1rem .85rem 2.8rem; border: 1.5px solid var(--border); border-radius: 999px; background: var(--surface); font-family: 'DM Sans', sans-serif; font-size: .95rem; color: var(--text); box-shadow: var(--shadow); outline: none; transition: border-color .2s, box-shadow .2s; }
+    #search::placeholder { color: #b0ada6; }
+    #search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(45,106,79,.12), var(--shadow); }
+    .section-label { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.25rem; }
+    .section-label__text { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .section-label__line { flex: 1; height: 1px; background: var(--border); }
+    .section-label__count { font-size: .72rem; font-weight: 600; color: var(--muted); background: #f0ede8; padding: .15rem .55rem; border-radius: 999px; }
+    #app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 5rem; }
+    .app-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s; display: flex; flex-direction: column; }
+    .app-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: #d0cdc7; }
+    .app-card__header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .app-card__icon { width: 52px; height: 52px; flex-shrink: 0; border-radius: .85rem; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+    .app-card__icon--vacaciones { background: linear-gradient(135deg, #1e3a5f, #2e6da4); box-shadow: 0 4px 14px rgba(30,58,95,.3); }
+    .app-card__icon--taskflow { background: linear-gradient(135deg, #312e81, #4f46e5); box-shadow: 0 4px 14px rgba(79,70,229,.3); }
+    .app-card__meta { flex: 1; min-width: 0; }
+    .app-card__name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .2rem; }
+    .app-card__version { font-size: .72rem; color: var(--muted); }
+    .app-card__desc { font-size: .88rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.1rem; flex: 1; }
+    .app-card__tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.25rem; }
+    .tag { font-size: .68rem; font-weight: 500; padding: .2rem .6rem; border-radius: 999px; background: #f0ede8; color: var(--muted); border: 1px solid var(--border); }
+    .tag--green  { background: var(--accent-light); color: var(--accent); border-color: #b7e4c7; }
+    .tag--indigo { background: #ede9fe; color: #4f46e5; border-color: #c4b5fd; }
+    .tag--blue   { background: #dbeafe; color: #2563eb; border-color: #93c5fd; }
+    .app-card__footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .app-card__pwa-badge { display: flex; align-items: center; gap: .4rem; font-size: .72rem; color: var(--muted); font-weight: 500; }
+    .app-card__pwa-badge svg { width: 13px; height: 13px; }
+    .btn-open { display: inline-flex; align-items: center; gap: .4rem; padding: .5rem 1.1rem; border-radius: 999px; font-size: .82rem; font-weight: 600; text-decoration: none; transition: background .18s, transform .18s; }
+    .btn-open svg { width: 13px; height: 13px; }
+    .btn-open--green  { background: var(--accent); color: #fff; }
+    .btn-open--green:hover  { background: #1b4332; transform: scale(1.03); }
+    .btn-open--indigo { background: #4f46e5; color: #fff; }
+    .btn-open--indigo:hover { background: #3730a3; transform: scale(1.03); }
+    #empty { display: none; text-align: center; padding: 4rem 1rem; color: var(--muted); font-size: .95rem; grid-column: 1 / -1; }
+    #empty svg { width: 40px; height: 40px; margin: 0 auto 1rem; display: block; opacity: .35; }
+    footer { text-align: center; padding: 2rem 0 3rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .8rem; }
+    footer span { color: var(--accent); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .app-card { animation: fadeUp .45s ease both; }
+    .app-card:nth-child(1) { animation-delay: .05s; }
+    .app-card:nth-child(2) { animation-delay: .13s; }
+    header > * { animation: fadeUp .5s ease both; }
+    .logo-mark       { animation-delay: .0s; }
+    header h1        { animation-delay: .07s; }
+    header .subtitle { animation-delay: .13s; }
+    .search-wrap     { animation-delay: .19s; }
+    @media (max-width: 480px) { header { padding: 3rem 0 2rem; } #app-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="container">
+      <div class="logo-mark">
+        <div class="logo-mark__dot"></div>
+        <span class="logo-mark__name">Tasklity</span>
+      </div>
+      <h1>Apps para tu<br><em>dia a dia</em></h1>
+      <p class="subtitle">Herramientas gratuitas, instalables y sin anuncios.<br>Funcionan en movil y escritorio.</p>
+      <div class="search-wrap">
+        <span class="search-wrap__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </span>
+        <input id="search" type="search" placeholder="Buscar una app..." autocomplete="off" />
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label__text">Aplicaciones</span>
+        <div class="section-label__line"></div>
+        <span class="section-label__count" id="count">2</span>
+      </div>
+      <div id="app-grid">
+
+        <div class="app-card" data-name="mis vacaciones vacaciones dias festivos ausencias calendario planificador">
+          <div class="app-card__header">
+            <div class="app-card__icon app-card__icon--vacaciones">&#127958;</div>
+            <div class="app-card__meta">
+              <div class="app-card__name">Mis Vacaciones</div>
+              <div class="app-card__version">v3.0 &middot; PWA instalable</div>
+            </div>
+          </div>
+          <p class="app-card__desc">Gestiona y planifica tus dias de vacaciones, festivos y ausencias a lo largo del ano. Visualiza tu balance de dias y lleva un registro claro de tus periodos de descanso.</p>
+          <div class="app-card__tags">
+            <span class="tag tag--blue">Calendario</span>
+            <span class="tag tag--green">Productividad</span>
+            <span class="tag">Trabajo</span>
+          </div>
+          <div class="app-card__footer">
+            <span class="app-card__pwa-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Instalable
+            </span>
+            <a href="/mis-vacaciones/" class="btn-open btn-open--green">
+              Abrir
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="app-card" data-name="taskflow tareas tasks gestion prioridades etiquetas organizacion">
+          <div class="app-card__header">
+            <div class="app-card__icon app-card__icon--taskflow">&#9989;</div>
+            <div class="app-card__meta">
+              <div class="app-card__name">TaskFlow</div>
+              <div class="app-card__version">v2.0 &middot; PWA instalable</div>
+            </div>
+          </div>
+          <p class="app-card__desc">Gestiona tus tareas con soporte de prioridades, etiquetas personalizadas y modo oscuro. Mantente organizado y nunca pierdas de vista lo mas importante.</p>
+          <div class="app-card__tags">
+            <span class="tag tag--indigo">Tareas</span>
+            <span class="tag tag--green">Productividad</span>
+            <span class="tag">Modo oscuro</span>
+          </div>
+          <div class="app-card__footer">
+            <span class="app-card__pwa-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Instalable
+            </span>
+            <a href="/taskflow/" class="btn-open btn-open--indigo">
+              Abrir
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div id="empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          No se encontro ninguna app con ese nombre.
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>Hecho con <span>&#9829;</span> &middot; Tasklity &middot; Apps gratuitas sin anuncios</p>
+    </div>
+  </footer>
+</div>
+<script>
+  var searchInput = document.getElementById('search');
+  var cards = document.querySelectorAll('.app-card[data-name]');
+  var countEl = document.getElementById('count');
+  var emptyEl = document.getElementById('empty');
+  function updateCount() {
+    var visible = 0;
+    cards.forEach(function(card) { if (card.style.display !== 'none') visible++; });
+    countEl.textContent = visible;
+    emptyEl.style.display = visible === 0 ? 'block' : 'none';
+  }
+  searchInput.addEventListener('input', function() {
+    var q = searchInput.value.trim().toLowerCase();
+    cards.forEach(function(card) {
+      card.style.display = (!q || card.dataset.name.includes(q)) ? '' : 'none';
+    });
+    updateCount();
+  });
+  updateCount();
+</script>
+</body>
+</html>
