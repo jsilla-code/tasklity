@@ -6,5 +6,9 @@
 /taskflow           /taskflow/index.html          200
 /taskflow/          /taskflow/index.html          200
 
+# RunPeak
+/runpeak            /runpeak/index.html           200
+/runpeak/           /runpeak/index.html           200
+
 # Fallback
 /*    /index.html    200
