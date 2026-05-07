@@ -50,6 +50,9 @@
     .app-card__icon { width: 52px; height: 52px; flex-shrink: 0; border-radius: .85rem; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
     .app-card__icon--vacaciones { background: linear-gradient(135deg, #1e3a5f, #2e6da4); box-shadow: 0 4px 14px rgba(30,58,95,.3); }
     .app-card__icon--taskflow { background: linear-gradient(135deg, #312e81, #4f46e5); box-shadow: 0 4px 14px rgba(79,70,229,.3); }
+    .app-card__icon--runpeak { background: linear-gradient(135deg, #7c1a00, #ff4d1a); box-shadow: 0 4px 14px rgba(255,77,26,.3); }
+    .btn-open--orange { background: #ff4d1a; color: #fff; }
+    .btn-open--orange:hover { background: #d93d10; transform: scale(1.03); }
     .app-card__meta { flex: 1; min-width: 0; }
     .app-card__name { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: .2rem; }
     .app-card__version { font-size: .72rem; color: var(--muted); }
@@ -76,6 +79,7 @@
     .app-card { animation: fadeUp .45s ease both; }
     .app-card:nth-child(1) { animation-delay: .05s; }
     .app-card:nth-child(2) { animation-delay: .13s; }
+    .app-card:nth-child(3) { animation-delay: .21s; }
     header > * { animation: fadeUp .5s ease both; }
     .logo-mark       { animation-delay: .0s; }
     header h1        { animation-delay: .07s; }
@@ -109,7 +113,7 @@
       <div class="section-label">
         <span class="section-label__text">Aplicaciones</span>
         <div class="section-label__line"></div>
-        <span class="section-label__count" id="count">2</span>
+        <span class="section-label__count" id="count">3</span>
       </div>
       <div id="app-grid">
 
@@ -159,6 +163,32 @@
               Instalable
             </span>
             <a href="/taskflow/" class="btn-open btn-open--indigo">
+              Abrir
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="app-card" data-name="runpeak running correr entrenamientos marcas personales carreras objetivos ritmo kilometros">
+          <div class="app-card__header">
+            <div class="app-card__icon app-card__icon--runpeak">&#127939;</div>
+            <div class="app-card__meta">
+              <div class="app-card__name">RunPeak</div>
+              <div class="app-card__version">v1.0 &middot; PWA instalable</div>
+            </div>
+          </div>
+          <p class="app-card__desc">Plataforma completa de running: registra entrenamientos, controla tus marcas personales, gestiona carreras y define objetivos. Dashboard con estadisticas y graficas de progreso.</p>
+          <div class="app-card__tags">
+            <span class="tag tag--green">Running</span>
+            <span class="tag" style="background:#fff3e0;color:#e65100;border-color:#ffcc80;">Deporte</span>
+            <span class="tag">Estadisticas</span>
+          </div>
+          <div class="app-card__footer">
+            <span class="app-card__pwa-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Instalable
+            </span>
+            <a href="/runpeak/" class="btn-open btn-open--orange">
               Abrir
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
