@@ -1,1 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómo gestionar las vacaciones laborales sin Excel – Tasklity</title>
+  <meta name="description" content="Aprende a gestionar tus días de vacaciones, festivos y compensaciones sin hojas de cálculo. Una app gratuita e instalable que funciona sin internet." />
+  <meta name="keywords" content="gestionar vacaciones trabajo, app vacaciones laborales, control días libres, gestión ausencias laborales, planificar vacaciones sin excel" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tasklity.app/blog/como-gestionar-vacaciones-laborales-sin-excel/" />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cómo gestionar las vacaciones laborales sin Excel" />
+  <meta property="og:description" content="Olvida las hojas de cálculo. Controla tus días de vacaciones, festivos y compensaciones desde el móvil, gratis y sin anuncios." />
+  <meta property="og:url" content="https://tasklity.app/blog/como-gestionar-vacaciones-laborales-sin-excel/" />
+  <meta property="og:site_name" content="Tasklity" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="article:published_time" content="2025-05-01T08:00:00+02:00" />
+  <meta property="article:author" content="Tasklity" />
+  <meta property="article:section" content="Organización" />
+  <meta property="article:tag" content="vacaciones, trabajo, productividad, organización" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gestiona las vacaciones laborales sin Excel" />
+  <meta name="twitter:description" content="App gratuita, instalable y sin anuncios para controlar tus días libres." />
+
+  <!-- JSON-LD Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cómo gestionar las vacaciones laborales sin Excel",
+    "description": "Aprende a gestionar tus días de vacaciones, festivos y compensaciones sin hojas de cálculo.",
+    "datePublished": "2025-05-01",
+    "dateModified": "2025-05-01",
+    "author": { "@type": "Organization", "name": "Tasklity" },
+    "publisher": { "@type": "Organization", "name": "Tasklity", "url": "https://tasklity.app" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://tasklity.app/blog/como-gestionar-vacaciones-laborales-sin-excel/" },
+    "keywords": "vacaciones laborales, gestionar ausencias, app vacaciones trabajo"
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuántos días de vacaciones tengo derecho por ley en España?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En España, la ley establece un mínimo de 30 días naturales de vacaciones al año (aproximadamente 22 días laborables). Muchos convenios colectivos amplían este derecho."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo llevar el control de mis vacaciones desde el móvil?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Apps como Mis Vacaciones de Tasklity permiten gestionar días de vacaciones, festivos, libre disposición y compensaciones desde el móvil, incluso sin internet, y son completamente gratuitas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué diferencia hay entre días naturales y días laborables de vacaciones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Los días naturales incluyen fines de semana y festivos, mientras que los días laborables solo cuentan los días de trabajo efectivo (lunes a viernes). 22 días laborables equivalen aproximadamente a 30 días naturales."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #fafaf8; --surface: #ffffff; --border: #e8e6e0;
+      --text: #1a1916; --muted: #7a7670; --accent: #2d6a4f;
+      --accent-light: #d8f3dc; --radius: 1.125rem;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.7; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(circle, #c8c5be 1px, transparent 1px);
+      background-size: 28px 28px; opacity: .3;
+    }
+    .page { position: relative; z-index: 1; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* NAV */
+    .nav { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+    .nav-logo { display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+    .nav-logo__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .nav-logo__name { font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .nav-back { font-size: .85rem; font-weight: 500; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-back:hover { color: var(--accent); }
+
+    /* ARTICLE */
+    .article { padding: 3.5rem 0 6rem; }
+    .article__label { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; display: block; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 400; line-height: 1.2; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .article__meta { font-size: .82rem; color: var(--muted); margin-bottom: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .article__intro { font-size: 1.1rem; color: var(--muted); line-height: 1.7; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); font-weight: 300; }
+
+    h2 { font-family: 'Instrument Serif', serif; font-size: 1.6rem; font-weight: 400; line-height: 1.3; margin: 2.5rem 0 .75rem; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.75rem 0 .5rem; }
+    p { margin-bottom: 1.1rem; color: #2a2724; }
+    ul, ol { margin: 1rem 0 1.25rem 1.5rem; }
+    li { margin-bottom: .4rem; color: #2a2724; }
+    strong { font-weight: 600; }
+
+    .callout {
+      background: var(--accent-light); border-left: 3px solid var(--accent);
+      border-radius: 0 .75rem .75rem 0; padding: 1rem 1.25rem; margin: 1.75rem 0;
+    }
+    .callout p { margin: 0; color: #1b4332; font-size: .92rem; }
+
+    .cta-box {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem; margin: 2.5rem 0;
+      text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+    }
+    .cta-box__icon { font-size: 2.5rem; margin-bottom: .75rem; }
+    .cta-box h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+    .cta-box p { font-size: .88rem; color: var(--muted); margin: 0 0 1rem; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--accent); color: #fff; padding: .7rem 1.5rem;
+      border-radius: 999px; font-weight: 600; font-size: .9rem;
+      text-decoration: none; transition: background .18s;
+    }
+    .cta-btn:hover { background: #1b4332; }
+
+    .faq { margin-top: 3rem; }
+    .faq-item { border-top: 1px solid var(--border); padding: 1.25rem 0; }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
+    .faq-q { font-weight: 600; margin-bottom: .4rem; }
+    .faq-a { color: var(--muted); font-size: .92rem; }
+
+    .related { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .related h3 { font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .related-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .related-link { font-size: .9rem; color: var(--accent); text-decoration: none; font-weight: 500; }
+    .related-link:hover { text-decoration: underline; }
+
+    footer { text-align: center; padding: 2rem 0 3rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .8rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo__dot"></div>
+        <span class="nav-logo__name">Tasklity</span>
+      </a>
+      <a href="/blog/" class="nav-back">← Blog</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <article class="article">
+        <span class="article__label">Organización</span>
+        <h1>Cómo gestionar las vacaciones laborales sin Excel</h1>
+        <div class="article__meta">
+          <span>📅 Mayo 2025</span>
+          <span>⏱ 5 min de lectura</span>
+          <span>🏷 Organización, Trabajo</span>
+        </div>
+
+        <p class="article__intro">
+          La mayoría de trabajadores gestionan sus vacaciones como podemos: una hoja de cálculo compartida con errores, un correo al jefe que tarda en responder, o simplemente contando con los dedos cuántos días quedan. Hay una forma mejor, y es completamente gratis.
+        </p>
+
+        <h2>El problema real de gestionar vacaciones con Excel</h2>
+        <p>
+          Seamos honestos: Excel no fue diseñado para esto. Una hoja de cálculo puede registrar números, pero no te avisa cuando estás a punto de superar tu cuota, no muestra un calendario visual de tus ausencias y, sobre todo, no funciona bien desde el móvil cuando estás intentando planificar un puente.
+        </p>
+        <p>
+          Los problemas más comunes que escuchamos de trabajadores que gestionan sus vacaciones con hojas de cálculo:
+        </p>
+        <ul>
+          <li>Errores de cálculo al sumar días laborables vs. naturales</li>
+          <li>No distinguen entre vacaciones, libre disposición, compensaciones horarias o días de convenio</li>
+          <li>Sin visión de calendario: no se ve fácilmente cuándo coincide con festivos</li>
+          <li>Acceso difícil desde el móvil</li>
+          <li>Sin alertas cuando el saldo está a punto de agotarse</li>
+        </ul>
+
+        <h2>Los tipos de ausencia que debes controlar</h2>
+        <p>
+          Antes de elegir cualquier herramienta, es importante entender qué categorías de días libres existen en la mayoría de convenios españoles:
+        </p>
+
+        <h3>Vacaciones anuales</h3>
+        <p>
+          La ley establece un mínimo de <strong>22 días laborables</strong> (o 30 días naturales) al año. Muchos convenios amplían este número. Estos días deben disfrutarse dentro del año natural o en el período acordado con la empresa.
+        </p>
+
+        <h3>Días de libre disposición</h3>
+        <p>
+          Son días adicionales que cada trabajador puede usar según su criterio, normalmente 2-3 al año dependiendo del convenio. No tienen restricción de uso más allá de avisar con antelación.
+        </p>
+
+        <h3>Compensaciones horarias</h3>
+        <p>
+          Las horas extra o las guardias se acumulan como horas de compensación que pueden canjearse por tiempo libre. El truco aquí es que se miden en <strong>horas</strong>, no en días, lo que complica la gestión.
+        </p>
+
+        <h3>Días de convenio especial</h3>
+        <p>
+          Navidad, Semana Santa, aniversarios de empresa... muchos convenios incluyen días adicionales que no encajan en las categorías anteriores y que es fácil olvidar.
+        </p>
+
+        <div class="callout">
+          <p>💡 <strong>Tip:</strong> Configura una categoría diferente por cada tipo de ausencia. Así verás de un vistazo cuánto te queda en cada bolsa, sin mezclar días que tienen reglas distintas.</p>
+        </div>
+
+        <h2>Qué buscar en una app de gestión de vacaciones</h2>
+        <p>
+          Al evaluar herramientas, estas son las funcionalidades que marcan la diferencia entre algo útil y algo que acabarás abandonando en dos semanas:
+        </p>
+
+        <ul>
+          <li><strong>Múltiples categorías</strong> — vacaciones, libre disposición, compensaciones, etc.</li>
+          <li><strong>Vista de calendario anual</strong> — para ver el año completo de un vistazo</li>
+          <li><strong>Saldo en tiempo real</strong> — cuántos días quedan de cada categoría</li>
+          <li><strong>Estados diferenciados</strong> — "confirmado" vs. "previsto" para planificar sin perder control</li>
+          <li><strong>Funciona offline</strong> — imprescindible si usas el móvil</li>
+          <li><strong>Sin registro ni suscripción</strong> — los datos son tuyos</li>
+          <li><strong>Exportación de datos</strong> — para llevar un backup o compartir con RRHH</li>
+        </ul>
+
+        <h2>Paso a paso: configura tu gestión de vacaciones en 10 minutos</h2>
+
+        <h3>1. Define tus categorías</h3>
+        <p>
+          Lo primero es crear las categorías que aplican a tu convenio. Como mínimo: vacaciones anuales, libre disposición y, si tienes, compensaciones horarias. Indica el total de días o horas disponibles en cada una.
+        </p>
+
+        <h3>2. Introduce lo que ya tienes pedido o disfrutado</h3>
+        <p>
+          Márcalos como "confirmados". Así el saldo disponible se actualiza automáticamente y ves de forma inmediata cuánto te queda libre.
+        </p>
+
+        <h3>3. Planifica las fechas que tienes en mente</h3>
+        <p>
+          Las fechas que quieres pedir pero aún no están aprobadas van como "previstos". Así puedes ver el impacto en tu saldo antes de hablar con tu responsable.
+        </p>
+
+        <h3>4. Revisa el calendario anual</h3>
+        <p>
+          Con un vistazo al calendario entero del año puedes detectar si estás dejando demasiados días para diciembre, si hay un puente que podrías ampliar con solo un día, o si te conviene mover alguna semana.
+        </p>
+
+        <div class="cta-box">
+          <div class="cta-box__icon">🏖️</div>
+          <h3>Mis Vacaciones — gratis e instalable</h3>
+          <p>Prueba la app de gestión de vacaciones de Tasklity. Sin registro, sin anuncios y funciona sin internet.</p>
+          <a href="/mis-vacaciones/" class="cta-btn">Abrir Mis Vacaciones →</a>
+        </div>
+
+        <h2>Preguntas frecuentes</h2>
+        <div class="faq">
+          <div class="faq-item">
+            <div class="faq-q">¿Cuántos días de vacaciones tengo derecho por ley en España?</div>
+            <div class="faq-a">La ley establece un mínimo de 30 días naturales de vacaciones al año, equivalentes a aproximadamente 22 días laborables. Muchos convenios colectivos amplían este derecho según el sector.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Puedo llevar el control de mis vacaciones desde el móvil?</div>
+            <div class="faq-a">Sí. Apps como Mis Vacaciones de Tasklity son PWA (Progressive Web Apps) instalables en cualquier móvil. Funcionan sin internet una vez instaladas y no requieren registro.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Qué diferencia hay entre días naturales y días laborables?</div>
+            <div class="faq-a">Los días naturales incluyen fines de semana y festivos. Los días laborables solo cuentan los días de trabajo efectivo. 22 días laborables equivalen a aproximadamente 30 días naturales.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">¿Puedo usar la misma app para gestionar compensaciones en horas?</div>
+            <div class="faq-a">Sí, si la app permite configurar categorías por horas. Mis Vacaciones de Tasklity permite definir cada categoría como "días" o "horas", por lo que sirve perfectamente para compensaciones horarias.</div>
+          </div>
+        </div>
+
+        <div class="related">
+          <h3>También te puede interesar</h3>
+          <div class="related-links">
+            <a href="/blog/apps-gratuitas-productividad-sin-anuncios/" class="related-link">Apps gratuitas de productividad sin anuncios →</a>
+            <a href="/blog/mejores-apps-running-gratuitas/" class="related-link">Las mejores apps de running gratuitas →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Hecho con ♥ · <a href="/">Tasklity</a> · Apps gratuitas sin anuncios</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
