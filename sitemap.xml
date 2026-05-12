@@ -4,7 +4,7 @@
 
   <!-- Página principal -->
   <url>
-    <loc>https://tasklity.app/</loc>
+    <loc>https://tasklity.com/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -12,19 +12,19 @@
 
   <!-- Apps -->
   <url>
-    <loc>https://tasklity.app/mis-vacaciones/</loc>
+    <loc>https://tasklity.com/mis-vacaciones/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://tasklity.app/taskflow/</loc>
+    <loc>https://tasklity.com/taskflow/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://tasklity.app/runpeak/</loc>
+    <loc>https://tasklity.com/runpeak/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -32,25 +32,25 @@
 
   <!-- Blog -->
   <url>
-    <loc>https://tasklity.app/blog/</loc>
+    <loc>https://tasklity.com/blog/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tasklity.app/blog/apps-gratuitas-productividad-sin-anuncios/</loc>
+    <loc>https://tasklity.com/blog/apps-gratuitas-productividad-sin-anuncios/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tasklity.app/blog/como-gestionar-vacaciones-laborales-sin-excel/</loc>
+    <loc>https://tasklity.com/blog/como-gestionar-vacaciones-laborales-sin-excel/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://tasklity.app/blog/mejores-apps-running-gratuitas/</loc>
+    <loc>https://tasklity.com/blog/mejores-apps-running-gratuitas/</loc>
     <lastmod>2025-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
