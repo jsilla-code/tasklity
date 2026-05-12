@@ -10,5 +10,15 @@
 /runpeak            /runpeak/index.html           200
 /runpeak/           /runpeak/index.html           200
 
+# Blog
+/blog                                               /blog/index.html                                                200
+/blog/                                              /blog/index.html                                                200
+/blog/como-gestionar-vacaciones-laborales-sin-excel /blog/como-gestionar-vacaciones-laborales-sin-excel/index.html  200
+/blog/como-gestionar-vacaciones-laborales-sin-excel/ /blog/como-gestionar-vacaciones-laborales-sin-excel/index.html 200
+/blog/apps-gratuitas-productividad-sin-anuncios     /blog/apps-gratuitas-productividad-sin-anuncios/index.html     200
+/blog/apps-gratuitas-productividad-sin-anuncios/    /blog/apps-gratuitas-productividad-sin-anuncios/index.html     200
+/blog/mejores-apps-running-gratuitas                /blog/mejores-apps-running-gratuitas/index.html                200
+/blog/mejores-apps-running-gratuitas/               /blog/mejores-apps-running-gratuitas/index.html                200
+
 # Fallback
 /*    /index.html    200
