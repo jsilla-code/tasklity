@@ -970,20 +970,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
         <div id="dashboard-trainings"></div>
       </div>
     </div>
-    <div class="card" style="margin-top:20px">
-      <div class="section-header" style="margin-bottom:10px">
-        <div>
-          <div class="section-title" style="font-size:20px">Recomendaciones de material</div>
-          <div class="section-sub">Selección para mejorar tus entrenamientos</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px">
-        <a class="btn btn-outline" href="https://amzn.to/42w9fO9" target="_blank" rel="nofollow sponsored noopener">⌚ Garmin</a>
-        <a class="btn btn-outline" href="https://amzn.to/4tynugx" target="_blank" rel="nofollow sponsored noopener">🎧 Auriculares</a>
-        <a class="btn btn-outline" href="https://amzn.to/3PdTsk8" target="_blank" rel="nofollow sponsored noopener">👟 Zapatillas</a>
-      </div>
-      <div class="form-hint" style="margin-top:10px">Enlaces de afiliado de Amazon.</div>
-    </div>
   </div>
 
   <!-- TRAINING PAGE -->
@@ -3231,6 +3217,88 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+  <!-- ═══ GEAR RECOMENDADO ═══ -->
+<!-- Reemplaza cada href con tu link de afiliado real -->
+<section style="padding:2rem 1.5rem;max-width:860px;margin:0 auto">
+  <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1.25rem">
+    <span style="font-size:.7rem;font-weight:600;letter-spacing:.1em;
+           text-transform:uppercase;color:var(--muted)">Gear recomendado</span>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+         gap:.75rem">
+
+    <!-- Tarjeta 1: Reloj GPS -->
+    <a href="https://amzn.to/42w9fO9"
+       target="_blank" rel="noopener sponsored"
+       style="display:block;background:var(--surface);border:1.5px solid
+              var(--border);border-radius:1rem;padding:1rem;text-align:center;
+              text-decoration:none;transition:transform .2s,box-shadow .2s"
+       onmouseover="this.style.transform='translateY(-2px)';
+                  this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'"
+       onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <span style="font-size:1.8rem;display:block;margin-bottom:.5rem">⌚</span>
+      <strong style="font-size:.8rem;color:var(--text);display:block;
+               margin-bottom:.25rem">GPS Running</strong>
+      <span style="font-size:.7rem;color:var(--muted);display:block;
+              margin-bottom:.6rem;line-height:1.4">
+        Garmin Forerunner — el favorito de los runners
+      </span>
+      <span style="font-size:.7rem;font-weight:600;color:#ff4d1a">
+        Ver en Amazon →
+      </span>
+    </a>
+
+    <!-- Tarjeta 2: Zapatillas -->
+    <a href="https://amzn.to/4tynugx"
+       target="_blank" rel="noopener sponsored"
+       style="display:block;background:var(--surface);border:1.5px solid
+              var(--border);border-radius:1rem;padding:1rem;text-align:center;
+              text-decoration:none;transition:transform .2s,box-shadow .2s"
+       onmouseover="this.style.transform='translateY(-2px)';
+                  this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'"
+       onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <span style="font-size:1.8rem;display:block;margin-bottom:.5rem">👟</span>
+      <strong style="font-size:.8rem;color:var(--text);display:block;
+               margin-bottom:.25rem">Zapatillas running</strong>
+      <span style="font-size:.7rem;color:var(--muted);display:block;
+              margin-bottom:.6rem;line-height:1.4">
+        Selección de los mejores modelos 2025
+      </span>
+      <span style="font-size:.7rem;font-weight:600;color:#ff4d1a">
+        Ver en Amazon →
+      </span>
+    </a>
+
+    <!-- Tarjeta 3: Auriculares -->
+    <a href="https://amzn.to/3PdTsk8"
+       target="_blank" rel="noopener sponsored"
+       style="display:block;background:var(--surface);border:1.5px solid
+              var(--border);border-radius:1rem;padding:1rem;text-align:center;
+              text-decoration:none;transition:transform .2s,box-shadow .2s"
+       onmouseover="this.style.transform='translateY(-2px)';
+                  this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'"
+       onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <span style="font-size:1.8rem;display:block;margin-bottom:.5rem">🎧</span>
+      <strong style="font-size:.8rem;color:var(--text);display:block;
+               margin-bottom:.25rem">Auriculares sport</strong>
+      <span style="font-size:.7rem;color:var(--muted);display:block;
+              margin-bottom:.6rem;line-height:1.4">
+        Resistentes al sudor, aguantan kilómetros
+      </span>
+      <span style="font-size:.7rem;font-weight:600;color:#ff4d1a">
+        Ver en Amazon →
+      </span>
+    </a>
+
+  </div>
+  <!-- Aviso legal obligatorio -->
+  <p style="font-size:.65rem;color:var(--muted);text-align:center;
+         margin-top:.75rem">
+    * Links de afiliado. Si compras a través de ellos, Tasklity recibe
+    una pequeña comisión sin coste adicional para ti.
+  </p>
+</section>
 <!-- Ko-fi widget flotante -->
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
