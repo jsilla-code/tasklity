@@ -284,7 +284,261 @@
       </div>
     </div>
   </main>
-<footer>
+<!--
+  ══════════════════════════════════════════════════════════════
+  TASKLITY · NEWSLETTER — SECCIÓN HOME
+  Pegar en index.html justo ANTES del <footer>
+  ══════════════════════════════════════════════════════════════
+-->
+
+<style>
+  /* ── Newsletter section ─────────────────────────────────── */
+  .nl-section {
+    padding: 5rem 0 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .nl-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .nl-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .nl-eyebrow::before,
+  .nl-eyebrow::after {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+    opacity: .5;
+  }
+
+  .nl-heading {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -.02em;
+    color: var(--text);
+    margin-bottom: .75rem;
+  }
+
+  .nl-heading em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .nl-sub {
+    font-size: .92rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  /* Form */
+  .nl-form {
+    display: flex;
+    gap: .5rem;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    padding: .35rem .35rem .35rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
+    transition: border-color .2s, box-shadow .2s;
+    position: relative;
+  }
+
+  .nl-form:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(45,106,79,.1), 0 4px 16px rgba(0,0,0,.06);
+  }
+
+  /* Honeypot anti-spam */
+  .nl-form .bot-trap { display: none !important; }
+
+  .nl-email {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+  }
+
+  .nl-email::placeholder { color: #b0ada6; }
+
+  .nl-btn {
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: .65rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .18s, transform .15s;
+    white-space: nowrap;
+  }
+
+  .nl-btn:hover { background: #1b4332; transform: scale(1.02); }
+  .nl-btn:active { transform: scale(.98); }
+
+  .nl-privacy {
+    margin-top: 1rem;
+    font-size: .72rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+  }
+
+  .nl-privacy svg {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+    opacity: .7;
+  }
+
+  /* Success state */
+  .nl-success {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+    padding: 1.5rem;
+    background: var(--accent-light);
+    border: 1.5px solid #b7e4c7;
+    border-radius: 1.25rem;
+    animation: nlFadeUp .4s ease both;
+  }
+
+  .nl-success.visible { display: flex; }
+  .nl-success-icon { font-size: 2rem; }
+  .nl-success-msg { font-size: .9rem; color: #1b4332; font-weight: 500; }
+
+  @keyframes nlFadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Divider superior */
+  .nl-divider {
+    max-width: 860px;
+    margin: 0 auto 4rem;
+    padding: 0 1.5rem;
+  }
+  .nl-divider hr {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+</style>
+
+<!-- Divider -->
+<div class="nl-divider"><hr></div>
+
+<!-- Newsletter section -->
+<section class="nl-section" aria-label="Suscripción a novedades">
+  <div class="nl-inner">
+
+    <div class="nl-eyebrow">Novedades</div>
+
+    <h2 class="nl-heading">
+      La próxima app llega<br><em>antes a tu bandeja</em>
+    </h2>
+
+    <p class="nl-sub">
+      Cuando lancemos algo nuevo, tú lo sabrás primero.<br>
+      Sin publicidad. Sin spam. Solo lo que importa.
+    </p>
+
+    <!-- Netlify Form -->
+    <form
+      class="nl-form"
+      name="newsletter"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      onsubmit="handleNlSubmit(event)"
+    >
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input type="hidden" name="source" value="home" />
+      <p class="bot-trap">
+        <label>No rellenar: <input name="bot-field" /></label>
+      </p>
+
+      <input
+        class="nl-email"
+        type="email"
+        name="email"
+        placeholder="tu@email.com"
+        required
+        autocomplete="email"
+      />
+      <button class="nl-btn" type="submit">Apuntarme →</button>
+    </form>
+
+    <!-- Estado de éxito (oculto hasta submit) -->
+    <div class="nl-success" id="nl-success-home" role="status" aria-live="polite">
+      <div class="nl-success-icon">🎉</div>
+      <div class="nl-success-msg">¡Perfecto! Te avisamos con el próximo lanzamiento.</div>
+    </div>
+
+    <p class="nl-privacy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      Sin spam · Baja cuando quieras
+    </p>
+
+  </div>
+</section>
+
+<script>
+  function handleNlSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const successEl = document.getElementById('nl-success-home');
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(() => {
+      form.style.display = 'none';
+      successEl.classList.add('visible');
+      // Ocultar mensaje de privacidad
+      const privacy = form.closest('.nl-inner').querySelector('.nl-privacy');
+      if (privacy) privacy.style.display = 'none';
+    })
+    .catch(() => {
+      // Fallback: submit normal si fetch falla
+      form.submit();
+    });
+  }
+</script>
+  <footer>
   <div class="container" style="text-align:center">
     <p>Hecho con <span>&#9829;</span> &middot; Tasklity &middot; Apps gratuitas sin anuncios</p>
     <a href="https://ko-fi.com/tasklity"
