@@ -149,6 +149,45 @@
     footer { text-align: center; padding: 2rem 0 3rem; border-top: 1px solid var(--border); color: var(--muted); font-size: .8rem; }
     footer a { color: var(--accent); text-decoration: none; }
     @media (max-width: 600px) { .comparison-table { font-size: .78rem; } .comparison-table th, .comparison-table td { padding: .55rem .65rem; } }
+  
+  /* ── Blog newsletter block ──────────────────────────────── */
+  .blog-nl {
+    margin: 3rem 0 2.5rem;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius, 1.125rem);
+    padding: 2rem 2rem 1.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.04);
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-nl::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--accent, #2d6a4f), #52b788); }
+  .blog-nl__header { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.25rem; }
+  .blog-nl__icon { font-size:1.6rem; line-height:1; flex-shrink:0; margin-top:.1rem; }
+  .blog-nl__title { font-family:'Instrument Serif',serif; font-size:1.2rem; font-weight:400; line-height:1.3; color: var(--text, #1a1916); margin-bottom:.3rem; }
+  .blog-nl__desc { font-size:.84rem; color: var(--muted, #7a7670); line-height:1.55; margin:0; }
+  .blog-nl__form { display:flex; gap:.5rem; background: var(--bg, #fafaf8); border:1.5px solid var(--border, #e8e6e0); border-radius:999px; padding:.3rem .3rem .3rem 1.1rem; transition:border-color .2s, box-shadow .2s; }
+  .blog-nl__form:focus-within { border-color: var(--accent, #2d6a4f); box-shadow: 0 0 0 3px rgba(45,106,79,.09); }
+  .blog-nl__form .bot-trap { display:none !important; }
+  .blog-nl__email { flex:1; min-width:0; border:none; background:transparent; font-family:'DM Sans',sans-serif; font-size:.87rem; color: var(--text, #1a1916); outline:none; }
+  .blog-nl__email::placeholder { color:#b0ada6; }
+  .blog-nl__btn { flex-shrink:0; background: var(--accent, #2d6a4f); color:#fff; border:none; border-radius:999px; padding:.6rem 1.25rem; font-family:'DM Sans',sans-serif; font-size:.8rem; font-weight:700; cursor:pointer; white-space:nowrap; transition:background .18s, transform .15s; }
+  .blog-nl__btn:hover { background:#1b4332; transform:scale(1.02); }
+  .blog-nl__btn:active { transform:scale(.98); }
+  .blog-nl__footer { display:flex; align-items:center; gap:.35rem; margin-top:.9rem; font-size:.7rem; color: var(--muted, #7a7670); }
+  .blog-nl__footer svg { width:11px; height:11px; flex-shrink:0; opacity:.65; }
+  .blog-nl__success { display:none; align-items:center; gap:.75rem; padding:.9rem 1.1rem; background: var(--accent-light, #d8f3dc); border-radius:.75rem; animation: blogNlFade .35s ease both; }
+  .blog-nl__success.visible { display:flex; }
+  .blog-nl__success span { font-size:.88rem; color:#1b4332; font-weight:500; }
+  @keyframes blogNlFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 480px) {
+    .blog-nl { padding: 1.5rem 1.25rem; }
+    .blog-nl__form { flex-direction: column; border-radius: .75rem; padding: .75rem; gap: .5rem; }
+    .blog-nl__email { padding: .5rem .25rem; }
+    .blog-nl__btn { border-radius: .5rem; text-align: center; }
+    .blog-nl__form:focus-within { border-radius: .75rem; }
+  }
+
   </style>
 </head>
 <body>
@@ -363,6 +402,25 @@
           </div>
         </div>
 
+         <aside class="blog-nl" aria-label="Suscripción novedades">
+          <div class="blog-nl__header">
+            <div class="blog-nl__icon">🏃</div>
+            <div>
+              <div class="blog-nl__title">Actualizaciones de RunPeak en tu bandeja</div>
+              <p class="blog-nl__desc">Nuevas funciones, guías de entrenamiento y mejoras de RunPeak. El primero en saberlo.</p>
+            </div>
+          </div>
+          <form class="blog-nl__form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleBlogNl(event, this)">
+            <input type="hidden" name="form-name" value="newsletter" />
+            <input type="hidden" name="source" value="blog-running" />
+            <p class="bot-trap"><label>No rellenar: <input name="bot-field" /></label></p>
+            <input class="blog-nl__email" type="email" name="email" placeholder="tu@email.com" required autocomplete="email" />
+            <button class="blog-nl__btn" type="submit">Seguir RunPeak →</button>
+          </form>
+          <div class="blog-nl__success" role="status" aria-live="polite"><span>🎉</span><span>¡Apuntado! Te avisamos con cada mejora.</span></div>
+          <div class="blog-nl__footer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Sin spam · Baja cuando quieras</div>
+        </aside>
+
         <div class="related">
           <h3>También te puede interesar</h3>
           <div class="related-links">
@@ -380,5 +438,25 @@
     </div>
   </footer>
 </div>
+
+<script>
+  function handleBlogNl(e, form) {
+    e.preventDefault();
+    const successEl = form.parentElement.querySelector('.blog-nl__success');
+    const footerEl  = form.parentElement.querySelector('.blog-nl__footer');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(() => {
+      form.style.display = 'none';
+      if (footerEl) footerEl.style.display = 'none';
+      successEl.classList.add('visible');
+    })
+    .catch(() => { form.submit(); });
+  }
+</script>
+
 </body>
 </html>
