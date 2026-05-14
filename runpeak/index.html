@@ -3310,12 +3310,33 @@ if ('serviceWorker' in navigator) {
 <!-- Ko-fi widget flotante -->
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
+  const placeKoFiWidget = () => {
+    const targets = Array.from(document.querySelectorAll('iframe, div, a, button')).filter((el) => {
+      const src = (el.getAttribute('src') || '').toLowerCase();
+      const id = (el.id || '').toLowerCase();
+      const cls = (el.className || '').toString().toLowerCase();
+      const title = (el.getAttribute('title') || '').toLowerCase();
+      return src.includes('ko-fi') || id.includes('kofi') || cls.includes('kofi') || title.includes('ko-fi');
+    });
+
+    targets.forEach((el) => {
+      const style = window.getComputedStyle(el);
+      if (style.position !== 'fixed') return;
+      el.style.left = '24px';
+      el.style.right = 'auto';
+      el.style.bottom = '96px';
+      el.style.zIndex = '1200';
+    });
+  };
+  
   kofiWidgetOverlay.draw('tasklity', {
     'type': 'floating-chat',
     'floating-chat.donateButton.text': '¿Te ayudé?',
     'floating-chat.donateButton.background-color': '#29abe0',
     'floating-chat.donateButton.text-color': '#fff'
   });
+  setTimeout(placeKoFiWidget, 350);
+  setTimeout(placeKoFiWidget, 1200)  
 </script>
 </body>
 </html>
