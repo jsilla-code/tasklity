@@ -76,6 +76,11 @@
     @keyframes slideUp { from { transform:translateX(-50%) translateY(2rem); opacity:0; } to { transform:translateX(-50%) translateY(0); opacity:1; } }
     #install-banner button { background: #6366f1; color: white; border: none; border-radius: .5rem; padding: .4rem .9rem; cursor: pointer; font-weight: 600; font-size: .8rem; flex-shrink: 0; }
     #install-banner button.dismiss { background: transparent; color: #c7d2fe; padding: .4rem .5rem; }
+    @media(max-width:768px){
+  iframe[src*="ko-fi"],
+  div[id*="kofi"],
+  div[class*="kofi"] { display:none!important; }
+}
   </style>
 
   <script>
@@ -726,9 +731,10 @@ requestAnimationFrame(() => {
           var id  = (el.id || '').toLowerCase();
           var cls = (el.className || '').toString().toLowerCase();
           if (src.includes('ko-fi') || id.includes('kofi') || cls.includes('kofi')) {
-            el.style.left   = '24px';
-            el.style.right  = 'auto';
+            el.style.right  = '24px';
+            el.style.left   = 'auto';
             el.style.bottom = '24px';
+            el.style.top    = 'auto';
             el.style.zIndex = '1200';
           }
         } catch(e) {}
