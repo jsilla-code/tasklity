@@ -603,6 +603,11 @@ canvas{display:block;max-width:100%}
 
   /* Toast above bottom nav */
   .toast{bottom:84px;right:12px;left:12px;text-align:center;justify-content:center}
+  
+  /* Ocultar widget Ko-fi en móvil para no tapar el bottom nav */
+  iframe[src*="ko-fi"],
+  div[id*="kofi"],
+  div[class*="kofi"] { display:none!important; }
 
   /* Section subtitle */
   .section-sub{font-size:12px}
@@ -1209,6 +1214,14 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
       </div>
     </div>
     <div class="more-divider"></div>
+    <a href="https://ko-fi.com/tasklity"
+       target="_blank"
+       rel="noopener"
+       onclick="closeMoreDrawer()"
+       class="more-export-btn"
+       style="text-decoration:none;color:#29abe0;background:rgba(41,171,224,0.08);border:1px solid rgba(41,171,224,0.2)">
+      ☕ Apoya Tasklity en Ko-fi
+    </a>
     <button class="more-export-btn" onclick="exportAllData();closeMoreDrawer()">
       ⬇ Exportar datos CSV
     </button>
@@ -3319,9 +3332,10 @@ if ('serviceWorker' in navigator) {
           var id  = (el.id || '').toLowerCase();
           var cls = (el.className || '').toString().toLowerCase();
           if (src.includes('ko-fi') || id.includes('kofi') || cls.includes('kofi')) {
-            el.style.left   = '24px';
-            el.style.right  = 'auto';
-            el.style.bottom = '96px';
+            el.style.right  = '24px';
+            el.style.left   = 'auto';
+            el.style.bottom = '24px';
+            el.style.top    = 'auto';
             el.style.zIndex = '1200';
           }
         } catch(e) {}
