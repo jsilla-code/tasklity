@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-P3BCFP5X9D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-P3BCFP5X9D');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Mis Vacaciones</title>
@@ -43,6 +35,16 @@
 
   <!-- Babel Standalone -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script>
+      // Registramos el preset personalizado de Babel para forzar el runtime clásico de React.
+      // Esto previene que Babel inyecte importaciones ocultas de 'react/jsx-runtime' 
+      // que rompen el importmap.
+      Babel.registerPreset('react-classic', {
+          presets: [
+              [Babel.availablePresets['react'], { runtime: 'classic' }]
+          ]
+      });
+  </script>
 
   <style>
     @keyframes fadeIn   { from { opacity: 0 }              to { opacity: 1 } }
@@ -110,7 +112,6 @@
   </script>
 </head>
 <body>
-
   <div id="splash">
     <div id="splash-icon">🏖️</div>
     <p>Cargando Mis Vacaciones…</p>
@@ -124,12 +125,8 @@
 
   <div id="root"></div>
 
-  <!--
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  CÓDIGO ORIGINAL — NO SE HA MODIFICADO NINGUNA LÍNEA        ║
-    ╚══════════════════════════════════════════════════════════════╝
-  -->
-  <script type="text/babel" data-type="module">
+  <!-- Utilizamos data-presets="react-classic" para usar nuestra configuración corregida -->
+  <script type="text/babel" data-type="module" data-presets="react-classic">
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { 
   Calendar, Clock, AlertTriangle, CheckCircle, Plus, 
@@ -560,8 +557,8 @@ export default function App() {
     const { [id]: removed, ...rest } = categories;
     setCategories(rest);
     setEntries(entries.filter(e => e.category !== id));
-  };
-  
+  };  
+
   // --- IMPORT / EXPORT ---
   const exportJSON = () => {
     const dataStr = JSON.stringify({ entries, categories }, null, 2);
@@ -1083,37 +1080,5 @@ requestAnimationFrame(() => {
   if (splash) { splash.classList.add('hidden'); setTimeout(() => splash.remove(), 400); }
 });
   </script>
-<!-- Ko-fi widget flotante -->
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  (function() {
-    function positionKoFi() {
-      document.querySelectorAll('*').forEach(function(el) {
-        try {
-          if (window.getComputedStyle(el).position !== 'fixed') return;
-          var src = (el.getAttribute('src') || '').toLowerCase();
-          var id  = (el.id || '').toLowerCase();
-          var cls = (el.className || '').toString().toLowerCase();
-          if (src.includes('ko-fi') || id.includes('kofi') || cls.includes('kofi')) {
-            el.style.left   = '24px';
-            el.style.right  = 'auto';
-            el.style.bottom = '24px';
-            el.style.zIndex = '1200';
-          }
-        } catch(e) {}
-      });
-    }
-
-    var observer = new MutationObserver(positionKoFi);
-    observer.observe(document.body, { childList: true, subtree: true });
-    setTimeout(function() { observer.disconnect(); }, 8000);
-
-    kofiWidgetOverlay.draw('tasklity', {
-      'type': 'floating-chat',
-      'floating-chat.donateButton.text': '¿Organizaste tus vacas?',
-      'floating-chat.donateButton.background-color': '#29abe0',
-      'floating-chat.donateButton.text-color': '#fff'
-    });
-  })();
-</script>
 </body>
+</html>
